@@ -53,11 +53,11 @@ public class TasksGroup {
         this.tasks = tasks;
     }
 
-    Project getProject() {
+    public Project getProject() {
         return project;
     }
 
-    void setProject(Project project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 }
