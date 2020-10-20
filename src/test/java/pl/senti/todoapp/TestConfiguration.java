@@ -9,10 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import pl.senti.todoapp.model.Task;
 import pl.senti.todoapp.model.TaskRepository;
-import pl.senti.todoapp.model.TasksGroup;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Field;
 import java.util.*;
 
 @Configuration

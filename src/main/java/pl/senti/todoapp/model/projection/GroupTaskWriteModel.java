@@ -1,6 +1,7 @@
 package pl.senti.todoapp.model.projection;
 
 import pl.senti.todoapp.model.Task;
+import pl.senti.todoapp.model.TasksGroup;
 
 import java.time.LocalDateTime;
 
@@ -24,8 +25,8 @@ public class GroupTaskWriteModel {
         this.deadline = deadline;
     }
 
-    public Task toTask(){
-        return new Task(description,deadline);
+    public Task toTask(final TasksGroup group){
+        return new Task(description,deadline,group);
 
     }
 }

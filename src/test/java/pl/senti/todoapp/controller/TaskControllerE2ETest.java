@@ -38,4 +38,15 @@ class TaskControllerE2ETest {
         assertThat(result).hasSize(initialSize+2);
 
     }
+    @Test
+    void httpGet_returnsGivenTask() {
+        // given
+        taskRepository.save(new Task("test task", LocalDateTime.now()));
+
+        // when
+        Task result = restTemplate.getForObject("http://localhost:" + port + "/tasks/2", Task.class);
+
+        // then
+        assertThat(result).hasFieldOrPropertyWithValue("description", "test task");
+    }
 }

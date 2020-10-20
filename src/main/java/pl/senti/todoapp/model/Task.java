@@ -24,8 +24,14 @@ public class Task {
     }
 
     public Task(String description,LocalDateTime deadline){
+        this(description, deadline,null);
+    }
+    public Task(String description,LocalDateTime deadline,TasksGroup group){
         this.description=description;
         this.deadline=deadline;
+        if (group!=null){
+            this.group=group;
+        }
     }
     public long getId() {
         return id;
