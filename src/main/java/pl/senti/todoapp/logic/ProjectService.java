@@ -5,6 +5,7 @@ import pl.senti.todoapp.model.*;
 import pl.senti.todoapp.model.projection.GroupReadModel;
 import pl.senti.todoapp.model.projection.GroupTaskWriteModel;
 import pl.senti.todoapp.model.projection.GroupWriteModel;
+import pl.senti.todoapp.model.projection.ProjectWriteModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,6 +29,9 @@ public class ProjectService {
         return repository.findAll();
     }
 
+    public Project save(final ProjectWriteModel toSave){
+        return repository.save(toSave.toProject());
+    }
 
     public Project createProject(final Project toSave) {
         return repository.save(toSave);
@@ -49,9 +53,9 @@ public class ProjectService {
                                         task.setDeadline(deadline.plusDays(projectStep.getDaysToDeadline()));
                                     return task;
                                     }
-                                    ).collect(Collectors.toSet())
+                                    ).collect(Collectors.toList())
                     );
-                   return taskGroupService.crateGroup(targetGroup);
+                   return taskGroupService.crateGroup(targetGroup,project);
 
                 }).orElseThrow(() -> new IllegalArgumentException("Project with given id not found"));
     }
