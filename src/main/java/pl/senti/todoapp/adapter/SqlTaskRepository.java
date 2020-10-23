@@ -17,4 +17,7 @@ interface SqlTaskRepository extends TaskRepository,JpaRepository<Task,Long> {
 
     @Override
     boolean existsByDoneIsFalseAndGroup_Id(Long groupId);
+
+    @Override
+    List<Task> findAllByGroup_Id(Long groupId);
 }

@@ -16,4 +16,5 @@ public interface TaskRepository {
     Task save(Task entity);
     List<Task> findByDone ( boolean done);
 
+    List<Task> findAllByGroup_Id(Long groupId);
 }
