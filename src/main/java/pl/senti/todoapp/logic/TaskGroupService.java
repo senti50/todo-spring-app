@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 import pl.senti.todoapp.TaskConfigurationProperties;
+import pl.senti.todoapp.model.Project;
 import pl.senti.todoapp.model.TaskGroupRepository;
 import pl.senti.todoapp.model.TaskRepository;
 import pl.senti.todoapp.model.TasksGroup;
@@ -26,10 +27,12 @@ public class TaskGroupService {
     }
 
     public GroupReadModel crateGroup(GroupWriteModel source) {
-        TasksGroup result = repository.save(source.toGroup());
+        return crateGroup(source,null);
+    }
+    GroupReadModel crateGroup(GroupWriteModel source, Project project) {
+        TasksGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
-
     public List<GroupReadModel> readAll() {
         return repository.findAll().stream()
                 .map(GroupReadModel::new)
@@ -46,4 +49,6 @@ public class TaskGroupService {
         result.setDone(!result.isDone());
         repository.save(result);
     }
+
+
 }
